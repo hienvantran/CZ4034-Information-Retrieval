@@ -26,9 +26,6 @@
 
       change the field type want to stem
       <field name="text" type="text_gen_stem"/>
-
-<<<<<<< HEAD
-5. 
-=======
-6. 
->>>>>>> 733d7faa168e119c72069ca2cdd1d11b7b2ab843
+5. Run the command: 
+      java -Dc=new_core -Dtype=text/csv -Dfiletypes=text/csv -jar example\exampledocs\post.jar server\solr\new_core\data\*.csv
+      
