@@ -3,7 +3,7 @@
 1. Create a core in solr
 2. Start the solr with "bin\solr.cmd start" command on Windows 
 3. Create "conf" and "data" folder in the newly created core
-4. Add the following to the managed-schema
+4. Add the following to the managed-schema (Click Edit file to view the schema)
 
       stemming:
       add in schema:
