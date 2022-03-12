@@ -132,4 +132,14 @@ b. Change the solr config
 6. Update data for indexing: 
       java -Dc=core_name -Dtype=text/csv -Dfiletypes=text/csv -jar example\exampledocs\post.jar server\solr\core_name\data\*.csv
       
-      Note: change core_name to the core that you've created
+
+## Note: 
+1. Change core_name to the core that you've created
+2. Each time change the config files, remember to reload the core (can do from Admin UI under Core Admin) and reindex the files.
+3. To test stemming:
+- use debugQuery
+- use Analyser - key the word in Index/Query to see how see how Solr does to Index/Query.
+4. To test spell checking:
+- In request-handler (qt), type ````/spell````
+- Check 'spellcheck' checkbox.
+- Type the query in q is enough
