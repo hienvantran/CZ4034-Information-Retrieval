@@ -2,7 +2,12 @@
 
 1. Create a core in solr: solr create -c core_name
 2. Start the solr with "bin\solr.cmd start" command on Windows 
-3. We will modify managed-schema and solrconfig in "conf" folder in the newly created core (directory: \solr-8.11.1\server\solr\core_name) for stemming and spell checking.
+We will modify managed-schema and solrconfig in "conf" folder in the newly created core (directory: \solr-8.11.1\server\solr\core_name) for stemming and spell checking.
+
+3. Update the managed-schema with field name without manually keying in the fields:
+Run the command to post data - solr will auto detect fields:
+      java -Dc=core_name -Dtype=text/csv -Dfiletypes=text/csv -jar example\exampledocs\post.jar server\solr\core_name\data\*.csv
+      Note: change core_name to the core that you've created
 4. (stemming) Add the following to the managed-schema
 ````
       <fieldType name="text_gen_stem" class="solr.TextField" positionIncrementGap="100">
@@ -118,7 +123,7 @@ b. Change the solr config
   </requestHandler>
 ````
 
-6. Run the command: 
+6. Update data for indexing: 
       java -Dc=core_name -Dtype=text/csv -Dfiletypes=text/csv -jar example\exampledocs\post.jar server\solr\core_name\data\*.csv
       
       Note: change core_name to the core that you've created
