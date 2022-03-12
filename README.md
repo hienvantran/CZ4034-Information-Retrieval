@@ -33,7 +33,7 @@
             </analyzer>
         </fieldType>
 
-      change the field type want to stem
+      <!-- change the field type want to stem -->
       <field name="text" type="text_gen_stem"/>
 ````
 5. (spell checking) We use IndexBasedSpellChecker: use the Solr index as the source for a parallel index used for spell checking. You must define a field as the basis for the index terms. Therefore, copy terms from some fields (such as text) to another field that you create for spell checking purposes (spellcheck). 
@@ -143,3 +143,4 @@ b. Change the solr config
 - In request-handler (qt), type ````/spell````
 - Check 'spellcheck' checkbox.
 - Type the query in q is enough
+5. The correct configurations are uploaded here with core_name = dummy, and the sample data (csv files) are not up-to-date. Please change the sample data to the latest version.
