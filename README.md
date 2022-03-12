@@ -11,7 +11,7 @@
       Run the command to post data - solr will auto detect fields:
       
       
-            ```java -Dc=core_name -Dtype=text/csv -Dfiletypes=text/csv -jar example\exampledocs\post.jar server\solr\core_name\data\*.csv```
+            java -Dc=core_name -Dtype=text/csv -Dfiletypes=text/csv -jar example\exampledocs\post.jar server\solr\core_name\data\*.csv
             
       Note: change core_name to the core that you've created
 4. (stemming) Add the following to the managed-schema
