@@ -846,6 +846,13 @@
 
      -->
 
+ <!-- Spell Check
+       The spell check component can return a list of alternative spelling
+       suggestions.  
+       http://wiki.apache.org/solr/SpellCheckComponent
+    -->
+
+
   <!-- Spell Check
 
        The spell check component can return a list of alternative spelling
@@ -890,17 +897,39 @@
            and from the 'wordbreak' spellchecker and combine them.
            collations (re-written queries) can include a combination of
            corrections from both spellcheckers -->
+            <str name="df">name</str>
       <str name="spellcheck.dictionary">default</str>
       <str name="spellcheck">on</str>
-      <str name="spellcheck.extendedResults">true</str>
+      <str name="spellcheck.onlyMorePopular">true</str>
+      <str name="spellcheck.dictionary">wordbreak</str>
+      <str name="spellcheck.extendedResults">true</str>       
       <str name="spellcheck.count">10</str>
       <str name="spellcheck.alternativeTermCount">5</str>
-      <str name="spellcheck.maxResultsForSuggest">5</str>
+      <str name="spellcheck.maxResultsForSuggest">5</str>       
       <str name="spellcheck.collate">true</str>
-      <str name="spellcheck.collateExtendedResults">true</str>
+      <str name="spellcheck.collateExtendedResults">true</str>  
       <str name="spellcheck.maxCollationTries">10</str>
-      <str name="spellcheck.maxCollations">5</str>
+      <str name="spellcheck">true</str>
+      <str name="spellcheck.build">true</str>
+      <str name="spellcheck.maxCollations">5</str> 
     </lst>
+<lst name="spellchecker">
+  <str name="name">wordbreak</str>
+  <str name="classname">solr.WordBreakSolrSpellChecker</str>      
+  <str name="field">spellcheck</str>
+  <str name="combineWords">true</str>
+  <str name="breakWords">true</str>
+  <int name="maxChanges">10</int>
+</lst>
+
+<!-- Example of using different distance measure -->
+<lst name="spellchecker">
+  <str name="name">spelling</str>
+  <str name="field">spellcheck</str>
+  <!-- Use a different Distance Measure -->
+  <str name="distanceMeasure">org.apache.lucene.search.spell.JaroWinklerDistance</str>
+  <str name="spellcheckIndexDir">./spellchecker</str>
+</lst>
     <arr name="last-components">
       <str>spellcheck</str>
     </arr>
