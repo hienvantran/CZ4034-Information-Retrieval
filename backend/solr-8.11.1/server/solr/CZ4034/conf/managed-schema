@@ -2,7 +2,7 @@
 <!-- Solr managed schema - automatically generated - DO NOT EDIT -->
 <schema name="default-config" version="1.6">
   <uniqueKey>id</uniqueKey>
-  <fieldType name="_nest_path_" class="solr.NestPathField" omitTermFreqAndPositions="true" omitNorms="true" maxCharsForDocValues="-1" stored="false" multiValued="false"/>
+  <fieldType name="_nest_path_" class="solr.NestPathField" maxCharsForDocValues="-1" omitNorms="true" omitTermFreqAndPositions="true" stored="false" multiValued="false"/>
   <fieldType name="ancestor_path" class="solr.TextField">
     <analyzer type="index">
       <tokenizer class="solr.KeywordTokenizerFactory"/>
@@ -468,15 +468,18 @@
   <field name="_text_" type="text_general" multiValued="true" indexed="true" stored="false"/>
   <field name="_version_" type="plong" indexed="false" stored="false"/>
   <field name="created_at" type="pdates"/>
+  <field name="creation_date_time" type="pdates"/>
   <field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
+  <field name="like_count" type="plongs"/>
   <field name="location" type="text_general"/>
   <field name="retweet_count" type="plongs"/>
   <field name="source" type="text_general"/>
   <field name="spellcheck" type="text_general" multiValued="true" indexed="true" stored="false"/>
   <field name="text" type="text_gen_stem"/>
+  <field name="tweet_id" type="plongs"/>
   <field name="user_desc" type="text_general"/>
   <field name="user_id" type="plongs"/>
-  <field name="username" type="text_general"/>
+  <field name="username" type="text_general" multiValued="false"/>
   <field name="verified" type="booleans"/>
   <dynamicField name="*_txt_en_split_tight" type="text_en_splitting_tight" indexed="true" stored="true"/>
   <dynamicField name="*_descendent_path" type="descendent_path" indexed="true" stored="true"/>
