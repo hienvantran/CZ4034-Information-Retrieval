@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Tweets = (props) => {
-    const mode = props.mode;
+    const sortMode = props.sortMode;
     const query = props.query;
     
     const posts = [
@@ -23,6 +23,18 @@ const Tweets = (props) => {
     };
 
     const filteredPosts = filterPosts(posts, query);
+
+    if (sortMode) {
+        filteredPosts.sort((a, b) => {
+            if (a.name < b.name) {
+                return -1;
+            }
+            if (a.name > b.name) {
+                return 1;
+            }
+            return 0;
+        });
+    }
 
     return (
         <ul>

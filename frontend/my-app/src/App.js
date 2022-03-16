@@ -21,7 +21,7 @@ function App() {
                 />
             </div>
                 <Tweets
-                    mode={0}
+                    sortMode={0}
                     query={searchQuery}
                 />
             <>
@@ -32,4 +32,6 @@ function App() {
             </>
         </div>
     );
-} export default App;
+}
+
+export default App;
