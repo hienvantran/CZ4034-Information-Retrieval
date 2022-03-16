@@ -37,14 +37,14 @@ function App() {
                     setSearchQuery={setSearchQuery}
                 />
             </div>
-            <>
-                <Category/>
-            </>
             <ul>
                 {filteredPosts.map(post => (
                     <li key={post.key}>{post.name}</li>
                 ))}
             </ul>
+            <>
+                <Category/>
+            </>
         </div>
 
     );
