@@ -30,10 +30,12 @@ function App() {
   return (
 
     <div classname='main'>
+      <div className='search'>
       <SearchBar
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
+      </div>
       <ul>
         {filteredPosts.map(post => (
           <li key={post.key}>{post.name}</li>
