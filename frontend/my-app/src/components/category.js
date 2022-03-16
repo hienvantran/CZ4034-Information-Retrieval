@@ -1,11 +1,8 @@
 import React from 'react'
 
-
-const category = () => {
-
+const Category = () => {
     return (
         <>
-
             <h1 className="mx-3 my-5">Type Of Vaccine(s)</h1>
             <div className="container-fluid mx-3">
                 <div className="row mt-5">
@@ -29,5 +26,5 @@ const category = () => {
         </>
     )
 }
-export default category;
+export default Category;
 
