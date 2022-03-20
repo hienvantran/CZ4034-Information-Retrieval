@@ -1,0 +1,15 @@
+.post__footer {
+    max-width: 100%;
+    min-height: 0!important;
+    flex-grow: 0;
+    position: static;
+    background: 0 0;
+    width: auto;
+    margin: 0 0;
+    padding: 0.25em 1em;
+    top: 0;
+    left: 0;
+    color: rgba(0, 0, 0, .4);
+    display: flex;
+    justify-content: space-between;
+}

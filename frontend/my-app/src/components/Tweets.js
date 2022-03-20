@@ -1,47 +1,51 @@
 import React from 'react';
+import { Label, Card, Icon } from 'semantic-ui-react'
 
-const Tweets = (props) => {
-    const sortMode = props.sortMode;
-    const query = props.query;
-    
-    const posts = [
-        { id: '1', name: 'This first post is about React' },
-        { id: '2', name: 'This next post is about Preact' },
-        { id: '3', name: 'We have yet another React post!' },
-        { id: '4', name: 'This is the fourth and final post' },
-    ];
+import RepeatIcon from "@material-ui/icons/Repeat";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 
-    const filterPosts = (posts, query) => {
-        if (!query) {
-            return posts;
-        }
 
-        return posts.filter((post) => {
-            const postName = post.name.toLowerCase();
-            return postName.includes(query);
-        });
-    };
-
-    const filteredPosts = filterPosts(posts, query);
-
-    if (sortMode) {
-        filteredPosts.sort((a, b) => {
-            if (a.name < b.name) {
-                return -1;
-            }
-            if (a.name > b.name) {
-                return 1;
-            }
-            return 0;
-        });
-    }
-
+import '../styles/tweets.css'
+const Tweets = ({ tweet }) => {
     return (
-        <ul>
-            {filteredPosts.map(post => (
-                <li key={post.key}>{post.name}</li>
-            ))}
-        </ul>
+        <div className='tweet-container'>
+            <div style={{ padding: 20 }}>
+                
+                <Card key={tweet.tweet_id} style={{ width: '100%' }}>
+                    <Card.Content>
+                        <Card.Header>{tweet.username}</Card.Header>
+                            <Card.Description>
+                            {tweet.text}
+                        </Card.Description>
+                    </Card.Content>
+                    <Card.Content extra>
+                        <Label>
+                            <RepeatIcon fontSize="small" />
+                            Sentiment
+                        </Label>
+                        <Label>
+                            <RepeatIcon fontSize="small" />
+                            {tweet.retweet_count}
+                        </Label>
+                        <Label>
+                            <FavoriteBorderIcon fontSize="small" />
+                            {tweet.like_count}
+                        </Label>
+                    </Card.Content>
+                    <div className="post__footer">
+                        <div>
+                            <Icon name="calendar check outline" />
+                            {tweet.creation_date_time}
+                        </div>
+                        <div>Tweet id: {tweet.tweet_id}</div>
+                        
+                    </div>
+                    
+                </Card>
+                
+            </div>
+            
+        </div>
     );
 };
 
