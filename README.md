@@ -132,6 +132,8 @@ b. Change the solr config
 6. Update data for indexing: 
       java -Dc=core_name -Dtype=text/csv -Dfiletypes=text/csv -jar example\exampledocs\post.jar server\solr\core_name\data\*.csv
       
+7. Reindexing:
+      Select "Documents" in the Solr Core. Change the document type to "XML" then type in "<delete><query>*:*</query></delete>" in the "Documents(s)" textbox and click "Submit Document"
 
 ## Note: 
 1. Change core_name to the core that you've created
