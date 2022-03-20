@@ -135,6 +135,9 @@ b. Change the solr config
 7. Reindexing:
       Select "Documents" in the Solr Core. Change the document type to "XML" then type in "<delete><query>*:*</query></delete>" in the "Documents(s)" textbox and click "Submit Document"
 
+8. Download the model
+      https://entuedu-my.sharepoint.com/:u:/g/personal/eong016_e_ntu_edu_sg/ESJGFMiK42RFg-JlZpO7I-MBJCxjij37KF4-D-DDtWX9iA?e=upTOJG
+
 ## Note: 
 1. Change core_name to the core that you've created
 2. Each time change the config files, remember to reload the core (can do from Admin UI under Core Admin) and reindex the files.
