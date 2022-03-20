@@ -1,5 +1,6 @@
 # CZ4034-Information-Retrieval
 
+#### FRONTEND TEAM _____ PLEASE, RUN BACKEND TO SHOW SEARCH RESULTS IN FRONTEND DEVLOPMENT
 1. Create a core in solr: solr create -c core_name
 2. Start the solr with "bin\solr.cmd start" command on Windows 
 
