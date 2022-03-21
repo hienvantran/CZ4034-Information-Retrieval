@@ -77,3 +77,47 @@
         width: 90%;
     }
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #727272;
+    border: 1px solid #555;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li {
+    text-align: center;
+    border-bottom: 2px solid #555;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+.Title {
+    background-color: #000000;
+    color: white;
+    margin-bottom: 5px;
+    width: 200px;
+    text-align: center;
+    height: 30px;
+    padding: 5px 16px;
+}
+
+li a.Vaccine:hover:not(.active) {
+    background-color: rgb(121, 121, 121);
+    color: white;
+}
+
+li a.Vaccine:focus{
+    background-color: rgb(189, 188, 188);
+}
