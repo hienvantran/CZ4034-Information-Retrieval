@@ -47,7 +47,7 @@ function App() {
             <div>{spellCheckSection}</div>
             <Grid container spacing={2} columns={16}>
                 <Grid.Column width={3}>
-                    <Category />
+                    <Category onSearchSubmit={onSearchSubmit} clearResults={clearResults} />
                 </Grid.Column>
                 <Grid.Column width={10} className='main-content'>
                     <div>There are total of {numTweets} results</div>
