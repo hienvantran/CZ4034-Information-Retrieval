@@ -19,9 +19,13 @@ function App() {
         const tweetsArray = await getSearch(term.toLowerCase());
         setnumTweets(tweetsArray.response.numFound);
         setTweets(tweetsArray.response.docs);
-        console.log(tweetsArray.spellcheck.suggestions[1].suggestion);
+        console.log("check suggestion");
+        console.log(tweetsArray.spellcheck.suggestions[1]);
         let spell = '';
-        for (let i = 0, len = tweetsArray.spellcheck.suggestions[1].suggestion.length, maxFreq = 0; i < len; i++) {
+
+        if (typeof tweetsArray.spellcheck.suggestions[1] !== 'undefined')
+        {
+            for (let i = 0, len = tweetsArray.spellcheck.suggestions[1].suggestion.length, maxFreq = 0; i < len; i++) {
             
             if (maxFreq < tweetsArray.spellcheck.suggestions[1].suggestion[i].freq)
             {
@@ -29,7 +33,7 @@ function App() {
                 spell = tweetsArray.spellcheck.suggestions[1].suggestion[i].word;
             }
             
-        }
+        }}
         console.log("this is a spellcheck " + spell);
         setspellcheck(spell);
     });
