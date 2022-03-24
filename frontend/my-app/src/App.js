@@ -1,10 +1,10 @@
-import React, { useState, useCallback, } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Grid } from 'semantic-ui-react';
 import './styles/App.css'
 
 import { getSearch } from './apis/getSearch';
 import SearchBar from './components/SearchBar'
-import Category from './components/Category';
+import Category from './components/category';
 import Sort from './components/Sort';
 import Tweets from './components/Tweets';
 import UpdateTwt from './components/UpdateTwt';
@@ -15,18 +15,29 @@ function App() {
     const [numTweets, setnumTweets] = useState(0);
     const [spellcheck, setspellcheck] = useState('');
 
+    const [catTerm, setcatTerm] = useState('');
+    const [sort, setSort] = useState('');
+
+
+
     const onSearchSubmit = useCallback(async term => {
-        const tweetsArray = await getSearch(term.toLowerCase());
+        let query = term + ' ' + catTerm;
+        console.log('onSearchSubmit cat term', catTerm);
+        console.log('onSearchSubmit sort term', sort);
+        
+        (query === ' ' || query === '') ? query = '*:*' : query = query;
+        console.log("new query ", query.toLowerCase());
+
+        const tweetsArray = await getSearch(query.toLowerCase(), sort);
         setnumTweets(tweetsArray.response.numFound);
         setTweets(tweetsArray.response.docs);
-        console.log("check suggestion");
-        console.log(tweetsArray.spellcheck.suggestions[1]);
+
         let spell = '';
 
         if (typeof tweetsArray.spellcheck.suggestions[1] !== 'undefined')
         {
             for (let i = 0, len = tweetsArray.spellcheck.suggestions[1].suggestion.length, maxFreq = 0; i < len; i++) {
-            
+
             if (maxFreq < tweetsArray.spellcheck.suggestions[1].suggestion[i].freq)
             {
                 maxFreq = tweetsArray.spellcheck.suggestions[1].suggestion[i].freq;
@@ -34,11 +45,26 @@ function App() {
             }
             
         }}
-        console.log("this is a spellcheck " + spell);
+
         setspellcheck(spell);
-    });
+    }, [catTerm, sort],
+    );
 
     const clearResults = useCallback(() => setTweets([]));
+
+
+
+    useEffect(() => {
+        setSort(sort);
+        console.log("use Effect " + sort);
+        onSearchSubmit('');
+    }, [sort])
+
+    useEffect(() => {
+        console.log("use Effect " + catTerm);
+        setcatTerm(catTerm);
+        onSearchSubmit('');
+    }, [catTerm])
 
     const renderedTweets = tweets.map((tweet, i) => {
         return <Tweets tweet={tweet} key={i} />
@@ -51,14 +77,15 @@ function App() {
             <div>{spellCheckSection}</div>
             <Grid container spacing={2} columns={16}>
                 <Grid.Column width={3}>
-                    <Category onSearchSubmit={onSearchSubmit} clearResults={clearResults} />
+                    <Category clearResults={clearResults} onCatSubmitted={setcatTerm} />
                 </Grid.Column>
                 <Grid.Column width={10} className='main-content'>
                     <div>There are total of {numTweets} results</div>
                     {renderedTweets}
                 </Grid.Column>
                 <Grid.Column width={3} >
-                    <Sort />
+                    <Sort clearResults={clearResults} onSortSubmitted={setSort} />
+                    <br />
                     <UpdateTwt />
                 </Grid.Column>
             </Grid>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'semantic-ui-react';
 
-const Category = ({ onSearchSubmit, clearResults }) => {
+
+const Category = ({ clearResults, onCatSubmitted }) => {
     const [bg, changeBGColor] = React.useState(1);
     const [term, setTerm] = useState('');
 
@@ -14,12 +14,14 @@ const Category = ({ onSearchSubmit, clearResults }) => {
     // submit a new search
     useEffect(() => {
         if (term !== '') {
-            onSearchSubmit(term);
+            // onSearchSubmit(term);
+            onCatSubmitted(term);
         }
         else {
             clearResults();
-            setTerm('*:*');
-            onSearchSubmit(term);
+            setTerm('');
+            // onSearchSubmit(term);
+            onCatSubmitted(term);
         }
     }, [term]);
 
