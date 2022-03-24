@@ -20,7 +20,7 @@ const Sort = ({ clearResults, onSortSubmitted}) => {
             <div class="vertical-menu">
             <div class="Title">Sort</div>
             <ul>
-                <li><a class="Vaccine"
+                <li><a class="VaccineTitle"
                     onClick={() => {
                         changeBGColor(1);
                         setTerm('');
