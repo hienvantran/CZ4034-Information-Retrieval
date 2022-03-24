@@ -103,7 +103,7 @@ li:last-child {
     border-bottom: none;
 }
 
-.Title {
+.VaccineTitle {
     background-color: #000000;
     color: white;
     margin-bottom: 5px;
@@ -121,3 +121,20 @@ li a.Vaccine:hover:not(.active) {
 li a.Vaccine:focus{
     background-color: rgb(189, 188, 188);
 }
+
+.SentimentTitle{
+    background-color: #000000;
+    color: white;
+    margin-bottom: -30px;
+    width: 200px;
+    text-align: center;
+    height: 30px;
+    padding: 5px 16px;
+    margin-top: 50px;
+}
+
+label{
+    padding-left: 10px;
+    font-size: 16px;
+}
+

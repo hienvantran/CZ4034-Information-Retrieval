@@ -1,41 +1,79 @@
-2022-03-14 08:58:14.381 INFO  (main) [   ] o.e.j.u.log Logging initialized @818ms to org.eclipse.jetty.util.log.Slf4jLog
-2022-03-14 08:58:14.538 INFO  (main) [   ] o.e.j.s.Server jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 16+36-2231
-2022-03-14 08:58:14.553 INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:///C:/Users/oeh19/Documents/GitHub/CZ4034-Information-Retrieval/backend/solr-8.11.1/server/contexts/] at interval 0
-2022-03-14 08:58:15.048 INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
-2022-03-14 08:58:15.055 INFO  (main) [   ] o.e.j.s.session DefaultSessionIdManager workerName=node0
-2022-03-14 08:58:15.055 INFO  (main) [   ] o.e.j.s.session No SessionScavenger set, using defaults
-2022-03-14 08:58:15.056 INFO  (main) [   ] o.e.j.s.session node0 Scavenging every 660000ms
-2022-03-14 08:58:15.092 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
-2022-03-14 08:58:15.095 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter  ___      _       Welcome to Apache Solr™ version 8.11.1
-2022-03-14 08:58:15.096 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter / __| ___| |_ _   Starting in standalone mode on port 8983
-2022-03-14 08:58:15.096 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter \__ \/ _ \ | '_|  Install dir: C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1
-2022-03-14 08:58:15.096 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter |___/\___/_|_|    Start time: 2022-03-14T08:58:15.096050900Z
-2022-03-14 08:58:15.104 INFO  (main) [   ] o.a.s.c.SolrPaths Using system property solr.solr.home: C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1\server\solr
-2022-03-14 08:58:15.104 INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1\server\solr\solr.xml
-2022-03-14 08:58:15.134 INFO  (main) [   ] o.a.s.c.SolrXmlConfig MBean server found: com.sun.jmx.mbeanserver.JmxMBeanServer@491b9b8, but no JMX reporters were configured - adding default JMX reporter.
-2022-03-14 08:58:15.480 INFO  (main) [   ] o.a.s.h.c.HttpShardHandlerFactory Host whitelist initialized: WhitelistHostChecker [whitelistHosts=null, whitelistHostCheckingEnabled=true]
-2022-03-14 08:58:15.621 WARN  (main) [   ] o.e.j.u.s.S.config Trusting all certificates configured for Client@c6b2dd9[provider=null,keyStore=null,trustStore=null]
-2022-03-14 08:58:15.621 WARN  (main) [   ] o.e.j.u.s.S.config No Client EndPointIdentificationAlgorithm configured for Client@c6b2dd9[provider=null,keyStore=null,trustStore=null]
-2022-03-14 08:58:15.715 WARN  (main) [   ] o.e.j.u.s.S.config Trusting all certificates configured for Client@29138d3a[provider=null,keyStore=null,trustStore=null]
-2022-03-14 08:58:15.715 WARN  (main) [   ] o.e.j.u.s.S.config No Client EndPointIdentificationAlgorithm configured for Client@29138d3a[provider=null,keyStore=null,trustStore=null]
-2022-03-14 08:58:15.746 WARN  (main) [   ] o.a.s.c.CoreContainer Not all security plugins configured!  authentication=disabled authorization=disabled.  Solr is only as secure as you make it. Consider configuring authentication/authorization before exposing Solr to users internal or external.  See https://s.apache.org/solrsecurity for more info
-2022-03-14 08:58:15.840 INFO  (main) [   ] o.a.s.c.TransientSolrCoreCacheDefault Allocating transient core cache for max 2147483647 cores with initial capacity of 1024
-2022-03-14 08:58:15.856 INFO  (main) [   ] o.a.s.h.a.MetricsHistoryHandler No .system collection, keeping metrics history in memory.
-2022-03-14 08:58:15.887 INFO  (main) [   ] o.a.s.m.r.SolrJmxReporter JMX monitoring for 'solr.node' (registry 'solr.node') enabled at server: com.sun.jmx.mbeanserver.JmxMBeanServer@491b9b8
-2022-03-14 08:58:15.887 INFO  (main) [   ] o.a.s.m.r.SolrJmxReporter JMX monitoring for 'solr.jvm' (registry 'solr.jvm') enabled at server: com.sun.jmx.mbeanserver.JmxMBeanServer@491b9b8
-2022-03-14 08:58:15.887 INFO  (main) [   ] o.a.s.m.r.SolrJmxReporter JMX monitoring for 'solr.jetty' (registry 'solr.jetty') enabled at server: com.sun.jmx.mbeanserver.JmxMBeanServer@491b9b8
-2022-03-14 08:58:15.919 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Found 0 core definitions underneath C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1\server\solr
-2022-03-14 08:58:16.123 INFO  (main) [   ] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@7e809b79{/solr,file:///C:/Users/oeh19/Documents/GitHub/CZ4034-Information-Retrieval/backend/solr-8.11.1/server/solr-webapp/webapp/,AVAILABLE}{C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1\server/solr-webapp/webapp}
-2022-03-14 08:58:16.138 INFO  (main) [   ] o.e.j.s.AbstractConnector Started ServerConnector@a4ca3f6{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8983}
-2022-03-14 08:58:16.138 INFO  (main) [   ] o.e.j.s.Server Started @2570ms
-2022-03-14 08:58:19.529 INFO  (qtp1932536213-29) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=47
-2022-03-14 08:59:14.689 INFO  (ShutdownMonitor) [   ] o.e.j.s.AbstractConnector Stopped ServerConnector@a4ca3f6{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8983}
-2022-03-14 08:59:14.689 INFO  (ShutdownMonitor) [   ] o.e.j.s.session node0 Stopped scavenging
-2022-03-14 08:59:14.689 INFO  (ShutdownMonitor) [   ] o.a.s.c.CoreContainer Shutting down CoreContainer instance=1540219992
-2022-03-14 08:59:14.689 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.node tag=null
-2022-03-14 08:59:14.689 INFO  (ShutdownMonitor) [   ] o.a.s.m.r.SolrJmxReporter Closing reporter [org.apache.solr.metrics.reporters.SolrJmxReporter@ef60710: rootName = null, domain = solr.node, service url = null, agent id = null] for registry solr.node/com.codahale.metrics.MetricRegistry@25940b58
-2022-03-14 08:59:14.689 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jvm tag=null
-2022-03-14 08:59:14.689 INFO  (ShutdownMonitor) [   ] o.a.s.m.r.SolrJmxReporter Closing reporter [org.apache.solr.metrics.reporters.SolrJmxReporter@15eb0ae9: rootName = null, domain = solr.jvm, service url = null, agent id = null] for registry solr.jvm/com.codahale.metrics.MetricRegistry@639240ef
-2022-03-14 08:59:14.689 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jetty tag=null
-2022-03-14 08:59:14.689 INFO  (ShutdownMonitor) [   ] o.a.s.m.r.SolrJmxReporter Closing reporter [org.apache.solr.metrics.reporters.SolrJmxReporter@65e0b505: rootName = null, domain = solr.jetty, service url = null, agent id = null] for registry solr.jetty/com.codahale.metrics.MetricRegistry@ea1de23
-2022-03-14 08:59:14.707 INFO  (ShutdownMonitor) [   ] o.e.j.s.h.ContextHandler Stopped o.e.j.w.WebAppContext@7e809b79{/solr,null,STOPPED}{C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1\server/solr-webapp/webapp}
+2022-03-14 08:59:20.404 INFO  (main) [   ] o.e.j.u.log Logging initialized @875ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-03-14 08:59:20.557 INFO  (main) [   ] o.e.j.s.Server jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 16+36-2231
+2022-03-14 08:59:20.573 INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:///C:/Users/oeh19/Documents/GitHub/CZ4034-Information-Retrieval/backend/solr-8.11.1/server/contexts/] at interval 0
+2022-03-14 08:59:21.059 INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+2022-03-14 08:59:21.059 INFO  (main) [   ] o.e.j.s.session DefaultSessionIdManager workerName=node0
+2022-03-14 08:59:21.059 INFO  (main) [   ] o.e.j.s.session No SessionScavenger set, using defaults
+2022-03-14 08:59:21.069 INFO  (main) [   ] o.e.j.s.session node0 Scavenging every 600000ms
+2022-03-14 08:59:21.091 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
+2022-03-14 08:59:21.107 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter  ___      _       Welcome to Apache Solr™ version 8.11.1
+2022-03-14 08:59:21.107 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter / __| ___| |_ _   Starting in standalone mode on port 8983
+2022-03-14 08:59:21.107 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter \__ \/ _ \ | '_|  Install dir: C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1
+2022-03-14 08:59:21.107 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter |___/\___/_|_|    Start time: 2022-03-14T08:59:21.107525500Z
+2022-03-14 08:59:21.107 INFO  (main) [   ] o.a.s.c.SolrPaths Using system property solr.solr.home: C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1\server\solr
+2022-03-14 08:59:21.107 INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1\server\solr\solr.xml
+2022-03-14 08:59:21.154 INFO  (main) [   ] o.a.s.c.SolrXmlConfig MBean server found: com.sun.jmx.mbeanserver.JmxMBeanServer@491b9b8, but no JMX reporters were configured - adding default JMX reporter.
+2022-03-14 08:59:21.477 INFO  (main) [   ] o.a.s.h.c.HttpShardHandlerFactory Host whitelist initialized: WhitelistHostChecker [whitelistHosts=null, whitelistHostCheckingEnabled=true]
+2022-03-14 08:59:21.618 WARN  (main) [   ] o.e.j.u.s.S.config Trusting all certificates configured for Client@c6b2dd9[provider=null,keyStore=null,trustStore=null]
+2022-03-14 08:59:21.618 WARN  (main) [   ] o.e.j.u.s.S.config No Client EndPointIdentificationAlgorithm configured for Client@c6b2dd9[provider=null,keyStore=null,trustStore=null]
+2022-03-14 08:59:21.721 WARN  (main) [   ] o.e.j.u.s.S.config Trusting all certificates configured for Client@29138d3a[provider=null,keyStore=null,trustStore=null]
+2022-03-14 08:59:21.721 WARN  (main) [   ] o.e.j.u.s.S.config No Client EndPointIdentificationAlgorithm configured for Client@29138d3a[provider=null,keyStore=null,trustStore=null]
+2022-03-14 08:59:21.744 WARN  (main) [   ] o.a.s.c.CoreContainer Not all security plugins configured!  authentication=disabled authorization=disabled.  Solr is only as secure as you make it. Consider configuring authentication/authorization before exposing Solr to users internal or external.  See https://s.apache.org/solrsecurity for more info
+2022-03-14 08:59:21.854 INFO  (main) [   ] o.a.s.c.TransientSolrCoreCacheDefault Allocating transient core cache for max 2147483647 cores with initial capacity of 1024
+2022-03-14 08:59:21.869 INFO  (main) [   ] o.a.s.h.a.MetricsHistoryHandler No .system collection, keeping metrics history in memory.
+2022-03-14 08:59:21.908 INFO  (main) [   ] o.a.s.m.r.SolrJmxReporter JMX monitoring for 'solr.node' (registry 'solr.node') enabled at server: com.sun.jmx.mbeanserver.JmxMBeanServer@491b9b8
+2022-03-14 08:59:21.908 INFO  (main) [   ] o.a.s.m.r.SolrJmxReporter JMX monitoring for 'solr.jvm' (registry 'solr.jvm') enabled at server: com.sun.jmx.mbeanserver.JmxMBeanServer@491b9b8
+2022-03-14 08:59:21.917 INFO  (main) [   ] o.a.s.m.r.SolrJmxReporter JMX monitoring for 'solr.jetty' (registry 'solr.jetty') enabled at server: com.sun.jmx.mbeanserver.JmxMBeanServer@491b9b8
+2022-03-14 08:59:21.932 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Found 0 core definitions underneath C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1\server\solr
+2022-03-14 08:59:22.152 INFO  (main) [   ] o.e.j.s.h.ContextHandler Started o.e.j.w.WebAppContext@7e809b79{/solr,file:///C:/Users/oeh19/Documents/GitHub/CZ4034-Information-Retrieval/backend/solr-8.11.1/server/solr-webapp/webapp/,AVAILABLE}{C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1\server/solr-webapp/webapp}
+2022-03-14 08:59:22.167 INFO  (main) [   ] o.e.j.s.AbstractConnector Started ServerConnector@a4ca3f6{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8983}
+2022-03-14 08:59:22.167 INFO  (main) [   ] o.e.j.s.Server Started @2638ms
+2022-03-14 08:59:23.351 INFO  (qtp1932536213-21) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1647248363249} status=0 QTime=19
+2022-03-14 08:59:23.400 INFO  (qtp1932536213-22) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1647248363250} status=0 QTime=73
+2022-03-14 08:59:25.336 INFO  (qtp1932536213-28) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={wt=json&_=1647248363249} status=0 QTime=0
+2022-03-14 08:59:25.336 INFO  (qtp1932536213-27) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1647248363249} status=0 QTime=0
+2022-03-14 08:59:25.371 INFO  (qtp1932536213-29) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1647248363250} status=0 QTime=42
+2022-03-14 08:59:25.487 INFO  (qtp1932536213-25) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=31
+2022-03-14 08:59:43.589 INFO  (qtp1932536213-24) [   x:CZ4034] o.a.s.h.a.CoreAdminOperation core create command schema=schema.xml&dataDir=data&name=CZ4034&action=CREATE&config=solrconfig.xml&instanceDir=CZ4034&wt=json&_=1647248363249
+2022-03-14 08:59:43.607 INFO  (qtp1932536213-24) [   x:CZ4034] o.a.s.c.SolrConfig Using Lucene MatchVersion: 8.11.1
+2022-03-14 08:59:43.623 WARN  (qtp1932536213-24) [   x:CZ4034] o.a.s.c.SolrConfig solrconfig.xml: <jmx> is no longer supported, use solr.xml:/metrics/reporter section instead
+2022-03-14 08:59:43.661 INFO  (qtp1932536213-24) [   x:CZ4034] o.a.s.s.IndexSchema Schema name=default-config
+2022-03-14 08:59:43.790 WARN  (qtp1932536213-24) [   x:CZ4034] o.a.s.D.s.SynonymFilterFactory Solr loaded a deprecated plugin/analysis class [solr.SynonymFilterFactory]. Please consult documentation how to replace it accordingly.
+2022-03-14 08:59:43.823 WARN  (qtp1932536213-24) [   x:CZ4034] o.a.s.s.AbstractSpatialPrefixTreeFieldType FieldType SpatialRecursivePrefixTreeFieldType does not allow omitNorms to be specified in schema, hardcoded behavior is omitNorms=true
+2022-03-14 08:59:43.823 WARN  (qtp1932536213-24) [   x:CZ4034] o.a.s.s.AbstractSpatialPrefixTreeFieldType FieldType SpatialRecursivePrefixTreeFieldType does not allow omitTermFreqAndPositions to be specified in schema, hardcoded behavior is omitTermFreqAndPositions=true
+2022-03-14 08:59:43.823 WARN  (qtp1932536213-24) [   x:CZ4034] o.a.s.s.AbstractSpatialPrefixTreeFieldType FieldType SpatialRecursivePrefixTreeFieldType does not allow termOffsets to be specified in schema, hardcoded behavior is termOffsets=false
+2022-03-14 08:59:43.823 WARN  (qtp1932536213-24) [   x:CZ4034] o.a.s.s.AbstractSpatialPrefixTreeFieldType FieldType SpatialRecursivePrefixTreeFieldType does not allow termPositions to be specified in schema, hardcoded behavior is termPositions=false
+2022-03-14 08:59:43.823 WARN  (qtp1932536213-24) [   x:CZ4034] o.a.s.s.AbstractSpatialPrefixTreeFieldType FieldType SpatialRecursivePrefixTreeFieldType does not allow omitPositions to be specified in schema, hardcoded behavior is omitPositions=true
+2022-03-14 08:59:43.943 INFO  (qtp1932536213-24) [   x:CZ4034] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
+2022-03-14 08:59:43.987 INFO  (qtp1932536213-24) [   x:CZ4034] o.a.s.c.CoreContainer Creating SolrCore 'CZ4034' using configuration from instancedir C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1\server\solr\CZ4034, trusted=true
+2022-03-14 08:59:43.987 INFO  (qtp1932536213-24) [   x:CZ4034] o.a.s.m.r.SolrJmxReporter JMX monitoring for 'solr.core.CZ4034' (registry 'solr.core.CZ4034') enabled at server: com.sun.jmx.mbeanserver.JmxMBeanServer@491b9b8
+2022-03-14 08:59:44.004 INFO  (qtp1932536213-24) [   x:CZ4034] o.a.s.c.SolrCore [[CZ4034] ] Opening new SolrCore at [C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1\server\solr\CZ4034], dataDir=[C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1\server\solr\CZ4034\data\]
+2022-03-14 08:59:44.347 INFO  (qtp1932536213-24) [   x:CZ4034] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2022-03-14 08:59:44.347 INFO  (qtp1932536213-24) [   x:CZ4034] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2022-03-14 08:59:44.347 INFO  (qtp1932536213-24) [   x:CZ4034] o.a.s.u.CommitTracker Hard AutoCommit: if uncommitted for 15000ms; 
+2022-03-14 08:59:44.347 INFO  (qtp1932536213-24) [   x:CZ4034] o.a.s.u.CommitTracker Soft AutoCommit: disabled
+2022-03-14 08:59:44.464 INFO  (qtp1932536213-24) [   x:CZ4034] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1\server\solr\CZ4034\conf
+2022-03-14 08:59:44.464 INFO  (qtp1932536213-24) [   x:CZ4034] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2022-03-14 08:59:44.480 INFO  (qtp1932536213-24) [   x:CZ4034] o.a.s.h.c.SpellCheckComponent Registering newSearcher listener for spellchecker: default
+2022-03-14 08:59:44.480 INFO  (qtp1932536213-24) [   x:CZ4034] o.a.s.h.ReplicationHandler Commits will be reserved for 10000 ms
+2022-03-14 08:59:44.496 INFO  (searcherExecutor-15-thread-1-processing-x:CZ4034) [   x:CZ4034] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2022-03-14 08:59:44.496 INFO  (searcherExecutor-15-thread-1-processing-x:CZ4034) [   x:CZ4034] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2022-03-14 08:59:44.496 INFO  (qtp1932536213-24) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={schema=schema.xml&dataDir=data&name=CZ4034&action=CREATE&config=solrconfig.xml&instanceDir=CZ4034&wt=json&_=1647248363249} status=0 QTime=917
+2022-03-14 08:59:44.516 INFO  (searcherExecutor-15-thread-1-processing-x:CZ4034) [   x:CZ4034] o.a.s.c.SolrCore [CZ4034]  Registered new searcher autowarm time: 0 ms
+2022-03-14 08:59:44.521 INFO  (qtp1932536213-29) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1647248363249} status=0 QTime=0
+2022-03-14 08:59:44.530 INFO  (qtp1932536213-23) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={wt=json&_=1647248363249} status=0 QTime=8
+2022-03-14 08:59:44.566 INFO  (qtp1932536213-42) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1647248363250} status=0 QTime=50
+2022-03-14 08:59:48.213 INFO  (ShutdownMonitor) [   ] o.e.j.s.AbstractConnector Stopped ServerConnector@a4ca3f6{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:8983}
+2022-03-14 08:59:48.213 INFO  (ShutdownMonitor) [   ] o.e.j.s.session node0 Stopped scavenging
+2022-03-14 08:59:48.213 INFO  (ShutdownMonitor) [   ] o.a.s.c.CoreContainer Shutting down CoreContainer instance=1540219992
+2022-03-14 08:59:48.213 INFO  (coreCloseExecutor-21-thread-1) [   ] o.a.s.c.SolrCore [CZ4034]  CLOSING SolrCore org.apache.solr.core.SolrCore@470c0c8d
+2022-03-14 08:59:48.213 INFO  (coreCloseExecutor-21-thread-1) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.core.CZ4034 tag=SolrCore@470c0c8d
+2022-03-14 08:59:48.213 INFO  (coreCloseExecutor-21-thread-1) [   ] o.a.s.m.r.SolrJmxReporter Closing reporter [org.apache.solr.metrics.reporters.SolrJmxReporter@593570fd: rootName = null, domain = solr.core.CZ4034, service url = null, agent id = null] for registry solr.core.CZ4034/com.codahale.metrics.MetricRegistry@7694420b
+2022-03-14 08:59:48.229 INFO  (coreCloseExecutor-21-thread-1) [   ] o.a.s.u.DirectUpdateHandler2 Committing on IndexWriter.close()  ... SKIPPED (unnecessary).
+2022-03-14 08:59:48.245 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.node tag=null
+2022-03-14 08:59:48.245 INFO  (ShutdownMonitor) [   ] o.a.s.m.r.SolrJmxReporter Closing reporter [org.apache.solr.metrics.reporters.SolrJmxReporter@ef60710: rootName = null, domain = solr.node, service url = null, agent id = null] for registry solr.node/com.codahale.metrics.MetricRegistry@68c5f3f0
+2022-03-14 08:59:48.245 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jvm tag=null
+2022-03-14 08:59:48.245 INFO  (ShutdownMonitor) [   ] o.a.s.m.r.SolrJmxReporter Closing reporter [org.apache.solr.metrics.reporters.SolrJmxReporter@15eb0ae9: rootName = null, domain = solr.jvm, service url = null, agent id = null] for registry solr.jvm/com.codahale.metrics.MetricRegistry@4c22f989
+2022-03-14 08:59:48.245 INFO  (ShutdownMonitor) [   ] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.jetty tag=null
+2022-03-14 08:59:48.245 INFO  (ShutdownMonitor) [   ] o.a.s.m.r.SolrJmxReporter Closing reporter [org.apache.solr.metrics.reporters.SolrJmxReporter@65e0b505: rootName = null, domain = solr.jetty, service url = null, agent id = null] for registry solr.jetty/com.codahale.metrics.MetricRegistry@7dd4698c
+2022-03-14 08:59:48.245 INFO  (ShutdownMonitor) [   ] o.e.j.s.h.ContextHandler Stopped o.e.j.w.WebAppContext@7e809b79{/solr,null,STOPPED}{C:\Users\oeh19\Documents\GitHub\CZ4034-Information-Retrieval\backend\solr-8.11.1\server/solr-webapp/webapp}
