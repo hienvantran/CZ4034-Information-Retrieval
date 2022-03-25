@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Sort = ({ clearResults, onSortSubmitted}) => {
+const Sort = ({ clearResults, onSortSubmitted }) => {
     const [bg, changeBGColor] = React.useState(1);
     const [term, setTerm] = useState('');
     // submit a new search
@@ -18,13 +18,12 @@ const Sort = ({ clearResults, onSortSubmitted}) => {
     return (
         <>
             <div class="vertical-menu">
-            <div class="Title">Sort</div>
+            <div class="VaccineTitle">Sort</div>
             <ul>
-                <li><a class="VaccineTitle"
+                <li><a class="Vaccine"
                     onClick={() => {
                         changeBGColor(1);
                         setTerm('');
-
                     }}
                     style={{ backgroundColor: bg === 1 ? "#727272" : "rgb(189, 188, 188)" }} href="#">Relevance</a></li>
                 <li><a class="Vaccine"

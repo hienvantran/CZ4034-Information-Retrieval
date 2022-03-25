@@ -37,7 +37,6 @@ const Category = ({ clearResults, onCatSubmitted }) => {
                         onClick={() => {
                             changeBGColor(1);
                             setTerm('');
-                            
                         }}
                         style={{ backgroundColor: bg === 1 ? "#727272" : "rgb(189, 188, 188)" }} href="#">All</a></li>
                         <li><a class="Vaccine" 
