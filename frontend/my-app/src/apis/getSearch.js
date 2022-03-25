@@ -1,6 +1,8 @@
 import _ from 'lodash';
 
-export const getSearch = _.memoize(async(term, sort) => {
+export const getSearch = _.memoize(async params => {
+    let term = params.term;
+    let sort = params.sort;
     let sorting = '';
     console.log("this is sort: " + sort);
     sort === '' ? sorting = '' : sorting = sort + '%20desc';
