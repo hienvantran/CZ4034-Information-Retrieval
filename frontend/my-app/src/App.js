@@ -5,6 +5,7 @@ import './styles/App.css'
 import { getSearch } from './apis/getSearch';
 import SearchBar from './components/SearchBar'
 import Category from './components/category';
+import Filter from './components/filter';
 import Sort from './components/Sort';
 import Tweets from './components/Tweets';
 import UpdateTwt from './components/UpdateTwt';
@@ -89,6 +90,7 @@ function App() {
             <Grid container spacing={2} columns={16}>
                 <Grid.Column width={3}>
                     <Category clearResults={clearResults} onCatSubmitted={setcatTerm} />
+                    <Filter clearResults={clearResults} onCatSubmitted={setcatTerm} />
                 </Grid.Column>
                 <Grid.Column width={10} className='main-content'>
                     <div>There are total of {numTweets} results</div>
