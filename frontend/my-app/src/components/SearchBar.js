@@ -31,7 +31,7 @@ const SearchBar = ({ onSearchSubmit, clearResults }) => {
                 placeholder="Search tweets . . ."
                 onChange={e => setDebouncedTerm(e.target.value)}
                 value={debouncedTerm} />
-//             <button className="search-button" type="submit" title="Search">🔎</button>
+            {/* <button className="search-button" type="submit" title="Search">🔎</button> */}
         </div>
     );
 };

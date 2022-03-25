@@ -15,20 +15,25 @@ function App() {
     const [numTweets, setnumTweets] = useState(0);
     const [spellcheck, setspellcheck] = useState('');
 
+    const [searchTerm, setsearchTerm] = useState('*:*');
     const [catTerm, setcatTerm] = useState('');
     const [sort, setSort] = useState('');
 
 
 
-    const onSearchSubmit = useCallback(async term => {
-        let query = term + ' ' + catTerm;
+    const onSearchSubmit = useCallback(async () => {
+        let query = searchTerm + ' ' + catTerm;
+        console.log('onSearchSubmit search term', searchTerm);
         console.log('onSearchSubmit cat term', catTerm);
         console.log('onSearchSubmit sort term', sort);
         
-        (query === ' ' || query === '') ? query = '*:*' : query = query;
+        if (query === ' ' || query === '')  query = '*:*';
         console.log("new query ", query.toLowerCase());
-
-        const tweetsArray = await getSearch(query.toLowerCase(), sort);
+        let params = {
+            'term': query.toLowerCase(),
+            'sort': sort
+        };
+        const tweetsArray = await getSearch(params);
         setnumTweets(tweetsArray.response.numFound);
         setTweets(tweetsArray.response.docs);
 
@@ -47,7 +52,7 @@ function App() {
         }}
 
         setspellcheck(spell);
-    }, [catTerm, sort],
+    }, [catTerm, sort, searchTerm],
     );
 
     const clearResults = useCallback(() => setTweets([]));
@@ -57,14 +62,20 @@ function App() {
     useEffect(() => {
         setSort(sort);
         console.log("use Effect " + sort);
-        onSearchSubmit('');
+        onSearchSubmit();
     }, [sort])
 
     useEffect(() => {
         console.log("use Effect " + catTerm);
         setcatTerm(catTerm);
-        onSearchSubmit('');
+        onSearchSubmit();
     }, [catTerm])
+
+    useEffect(() => {
+        console.log("use Effect " + searchTerm);
+        setsearchTerm(searchTerm);
+        onSearchSubmit();
+    }, [searchTerm])
 
     const renderedTweets = tweets.map((tweet, i) => {
         return <Tweets tweet={tweet} key={i} />
@@ -73,7 +84,7 @@ function App() {
 
     return (
         <div className='main'>
-            <SearchBar onSearchSubmit={onSearchSubmit} clearResults={clearResults} />
+            <SearchBar onSearchSubmit={setsearchTerm} clearResults={clearResults} />
             <div>{spellCheckSection}</div>
             <Grid container spacing={2} columns={16}>
                 <Grid.Column width={3}>
@@ -89,11 +100,6 @@ function App() {
                     <UpdateTwt />
                 </Grid.Column>
             </Grid>
-           
-           
-            
-            
-            
         </div>
     );
 }
