@@ -1,7 +1,7 @@
 backend/solr-8.11.1/server/tmp/
 backend/solr-8.11.1/server/logs/
 # Ignore the node_modules directory
-node_modules/
+frontend/my-app/node_modules/
 
 # Ignore Logs
 logs
@@ -17,3 +17,6 @@ logs
 .idea/
 .vscode/
 *.sw*
+
+backend\venv
+backend\__pycache__

@@ -19,7 +19,7 @@ function App() {
     const [searchTerm, setsearchTerm] = useState('*:*');
     const [catTerm, setcatTerm] = useState('');
     const [sort, setSort] = useState('');
-
+    const [currentTime, setCurrentTime] = useState(0);
 
 
     const onSearchSubmit = useCallback(async () => {
@@ -78,6 +78,12 @@ function App() {
         onSearchSubmit();
     }, [searchTerm])
 
+    useEffect(() => {
+        fetch('/time').then(res => res.json()).then(data => {
+            setCurrentTime(data.time);
+        });
+    }, []);
+
     const renderedTweets = tweets.map((tweet, i) => {
         return <Tweets tweet={tweet} key={i} />
     })
@@ -85,6 +91,7 @@ function App() {
 
     return (
         <div className='main'>
+            <p>The current time is {currentTime}.</p>
             <SearchBar onSearchSubmit={setsearchTerm} clearResults={clearResults} />
             <div>{spellCheckSection}</div>
             <Grid container spacing={2} columns={16}>

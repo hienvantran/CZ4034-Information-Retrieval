@@ -6,8 +6,8 @@ const UpdateTwt = () => {
             
             <div class="vertical-menu">
                 <div class="VaccineTitle">Update Tweets</div>
-                <input type="checkbox" id="all_vaccines" name="all_vaccines" value="All"></input>
-                <label for="all_vaccines"> All</label><br></br>
+                {/* <input type="checkbox" id="all_vaccines" name="all_vaccines" value="All"></input>
+                <label for="all_vaccines"> All</label><br></br> */}
                 <input type="checkbox" id="pfizer" name="pfizer" value="Pfizer"></input>
                 <label for="pfizer">Pfizer</label><br></br>
                 <input type="checkbox" id="moderna" name="moderna" value="Morderna"></input>
