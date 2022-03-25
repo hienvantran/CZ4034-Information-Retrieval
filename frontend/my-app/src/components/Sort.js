@@ -18,11 +18,7 @@ const Sort = ({ clearResults, onSortSubmitted }) => {
     return (
         <>
             <div class="vertical-menu">
-<<<<<<< HEAD
-            <div class="VaccineTitle">Sort</div>
-=======
                 <div class="VaccineTitle">Sort</div>
->>>>>>> 51fcd8adc39052508d90ddfff980ae43bfb118bb
             <ul>
                 <li><a class="Vaccine"
                     onClick={() => {
