@@ -803,6 +803,13 @@
     </lst>
   </initParams>
 
+ <initParams path="/update/**">
+   <lst name="defaults">
+    <str name="update.chain">dedupe</str>
+   </lst>
+  </initParams>
+
+
   <!-- Search Components
 
        Search components are registered to SolrCore and used by
@@ -1107,11 +1114,20 @@
   </updateProcessor>
 
   <!-- The update.autoCreateFields property can be turned to false to disable schemaless mode -->
-  <updateRequestProcessorChain name="add-unknown-fields-to-the-schema" default="${update.autoCreateFields:true}"
+  <updateRequestProcessorChain name="dedupe" default="${update.autoCreateFields:true}"
            processor="uuid,remove-blank,field-name-mutating,parse-boolean,parse-long,parse-double,parse-date,add-schema-fields">
     <processor class="solr.LogUpdateProcessorFactory"/>
     <processor class="solr.DistributedUpdateProcessorFactory"/>
     <processor class="solr.RunUpdateProcessorFactory"/>
+<processor class="solr.processor.SignatureUpdateProcessorFactory">
+    <bool name="enabled">true</bool>
+    <str name="signatureField">id</str>
+    <bool name="overwriteDupes">false</bool>
+    <str name="fields">name,features,cat</str>
+    <str name="signatureClass">solr.processor.Lookup3Signature</str>
+  </processor>
+  <processor class="solr.LogUpdateProcessorFactory" />
+  <processor class="solr.RunUpdateProcessorFactory" />
   </updateRequestProcessorChain>
 
   <!-- Deduplication
@@ -1123,18 +1139,18 @@
        uniqueness based on that anyway.
 
     -->
-  <!--
-     <updateRequestProcessorChain name="dedupe">
+
+     <updateRequestProcessorChain name="dedupe" default="true">
        <processor class="solr.processor.SignatureUpdateProcessorFactory">
          <bool name="enabled">true</bool>
          <str name="signatureField">id</str>
-         <str name="fields">name,features,cat</str>
+         <str name="fields">tweet_id,text</str>
          <str name="signatureClass">solr.processor.Lookup3Signature</str>
        </processor>
        <processor class="solr.LogUpdateProcessorFactory" />
        <processor class="solr.RunUpdateProcessorFactory" />
      </updateRequestProcessorChain>
-    -->
+
 
   <!-- Response Writers
 
