@@ -66,12 +66,12 @@ def preprocess(data):
 
 def crawl_NewData(index):
     query_matching = {
-        '1' : 'Pfizer/BioNTech vaccine OR Pfizer-BioNTech vaccine OR Pfizer vaccine OR BioNTech vaccine OR pfizer lang:en',
-        '2' : 'Sinovac-CoronaVac vaccine OR Sinovac vaccine OR CoronaVac vaccine OR sinovac lang:en',
-        '3' : 'Moderna vaccine OR moderna OR Moderna Covid-19 vaccine lang:en',
-        '4' : 'Covaxin vaccine OR covaxin lang:en',
-        '5' : 'Sputnik V vaccine OR Sputnik vaccine OR sputnik V OR russia sputnik vaccine lang:en',
-        '6' : 'covid19 vaccine OR covid vaccine OR Coronavirus Vaccine OR coronovarius vaccine lang:en'
+        '0' : 'Pfizer/BioNTech vaccine OR Pfizer-BioNTech vaccine OR Pfizer vaccine OR BioNTech vaccine OR pfizer lang:en',
+        '1' : 'Moderna vaccine OR moderna OR Moderna Covid-19 vaccine lang:en',
+        '2' : 'Covaxin vaccine OR covaxin lang:en',
+        '3' : 'Sinovac-CoronaVac vaccine OR Sinovac vaccine OR CoronaVac vaccine OR sinovac lang:en',
+        '4' : 'Sputnik V vaccine OR Sputnik vaccine OR sputnik V OR russia sputnik vaccine lang:en',
+        '5' : 'covid19 vaccine OR covid vaccine OR Coronavirus Vaccine OR coronovarius vaccine lang:en'
     }
 
     query = query_matching[index]

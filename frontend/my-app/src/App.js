@@ -20,6 +20,8 @@ function App() {
     const [catTerm, setcatTerm] = useState('');
     const [sort, setSort] = useState('');
 
+    const [updateIndex, setupdateIndex] = useState([])
+
 
     const onSearchSubmit = useCallback(async () => {
         let query = searchTerm + ' ' + catTerm;
@@ -57,7 +59,14 @@ function App() {
 
     const clearResults = useCallback(() => setTweets([]));
 
-
+    useEffect(() => {
+        console.log("use Effect " + updateIndex);
+        for (let index in updateIndex) {
+            fetch('/update/' + index).then(res => res.json()).catch(error => {
+                console.log(error)
+            });
+        }
+    }, [updateIndex]);
 
     useEffect(() => {
         setSort(sort);
@@ -99,7 +108,7 @@ function App() {
                 <Grid.Column width={3} >
                     <Sort clearResults={clearResults} onSortSubmitted={setSort} />
                     <br />
-                    <UpdateTwt />
+                    <UpdateTwt onUpdateTweets={setupdateIndex}/>
                 </Grid.Column>
             </Grid>
         </div>

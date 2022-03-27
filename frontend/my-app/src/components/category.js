@@ -5,11 +5,6 @@ const Category = ({ clearResults, onCatSubmitted }) => {
     const [bg, changeBGColor] = React.useState(1);
     const [term, setTerm] = useState('');
 
-    const [currentRadioValue, setCurrentRadioValue] = useState()
-
-    const handleRadioChange = (e) => {
-        setCurrentRadioValue(e.target.value);
-    };
 
     // submit a new search
     useEffect(() => {
