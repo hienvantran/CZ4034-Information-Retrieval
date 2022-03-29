@@ -8,6 +8,7 @@ import Category from './components/category';
 import Filter from './components/filter';
 import Sort from './components/Sort';
 import Tweets from './components/Tweets';
+import Visualization from './components/visualization';
 import UpdateTwt from './components/UpdateTwt';
 
 
@@ -20,8 +21,13 @@ function App() {
     const [catTerm, setcatTerm] = useState('');
     const [sort, setSort] = useState('');
 
-    const [updateIndex, setupdateIndex] = useState([])
+    const [updateIndex, setupdateIndex] = useState([]);
+    const [visualizeTab, setVisualizeTab] = useState(false);
+    
 
+    const handleOnChange = () => {
+        setVisualizeTab(!visualizeTab);
+    };
 
     const onSearchSubmit = useCallback(async () => {
         let query = searchTerm + ' ' + catTerm;
@@ -90,6 +96,8 @@ function App() {
     const renderedTweets = tweets.map((tweet, i) => {
         return <Tweets tweet={tweet} key={i} />
     })
+
+
     const spellCheckSection = spellcheck !== '' ? <div>Do you mean {spellcheck}?</div> : <></>;
 
     return (
@@ -102,8 +110,10 @@ function App() {
                     <Filter clearResults={clearResults} onCatSubmitted={setcatTerm} />
                 </Grid.Column>
                 <Grid.Column width={10} className='main-content'>
-                    <div>There are total of {numTweets} results</div>
-                    {renderedTweets}
+                    <span>There are total of {numTweets} results</span>
+                    <input type="checkbox" id="general" name="general" value="General" checked={visualizeTab} onChange={() => handleOnChange()} style={{ float: 'right' }} ></input>
+
+                    {(visualizeTab) ? renderedTweets : <Visualization />} 
                 </Grid.Column>
                 <Grid.Column width={3} >
                     <Sort clearResults={clearResults} onSortSubmitted={setSort} />
