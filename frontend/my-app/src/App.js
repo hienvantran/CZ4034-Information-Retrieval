@@ -113,7 +113,7 @@ function App() {
                     <span>There are total of {numTweets} results</span>
                     <input type="checkbox" id="general" name="general" value="General" checked={visualizeTab} onChange={() => handleOnChange()} style={{ float: 'right' }} ></input>
 
-                    {(visualizeTab) ? renderedTweets : <Visualization />} 
+                    {(!visualizeTab) ? renderedTweets : <Visualization />} 
                 </Grid.Column>
                 <Grid.Column width={3} >
                     <Sort clearResults={clearResults} onSortSubmitted={setSort} />
