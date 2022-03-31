@@ -463,17 +463,18 @@
       <tokenizer class="solr.WhitespaceTokenizerFactory"/>
     </analyzer>
   </fieldType>
-  <field name="signatureField" type="string" stored="true" indexed="true" multiValued="false" />
   <field name="_nest_path_" type="_nest_path_"/>
   <field name="_root_" type="string" docValues="false" indexed="true" stored="false"/>
   <field name="_text_" type="text_general" multiValued="true" indexed="true" stored="false"/>
   <field name="_version_" type="plong" indexed="false" stored="false"/>
+  <field name="cleaned_text" type="text_general"/>
   <field name="created_at" type="pdates"/>
   <field name="creation_date_time" type="pdates"/>
   <field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
   <field name="like_count" type="plongs"/>
   <field name="location" type="text_general"/>
   <field name="retweet_count" type="plongs"/>
+  <field name="sentiment" type="plongs"/>
   <field name="source" type="text_general"/>
   <field name="spellcheck" type="text_general" multiValued="true" indexed="true" stored="false"/>
   <field name="text" type="text_gen_stem"/>
@@ -556,4 +557,5 @@
   <copyField source="source" dest="source_str" maxChars="256"/>
   <copyField source="username" dest="username_str" maxChars="256"/>
   <copyField source="location" dest="location_str" maxChars="256"/>
+  <copyField source="cleaned_text" dest="cleaned_text_str" maxChars="256"/>
 </schema>
