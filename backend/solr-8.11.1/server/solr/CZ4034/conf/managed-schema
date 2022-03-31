@@ -474,7 +474,7 @@
   <field name="like_count" type="plongs"/>
   <field name="location" type="text_general"/>
   <field name="retweet_count" type="plongs"/>
-  <field name="sentiment" type="plongs"/>
+  <field name="sentiment" type="text_general"/>
   <field name="source" type="text_general"/>
   <field name="spellcheck" type="text_general" multiValued="true" indexed="true" stored="false"/>
   <field name="text" type="text_gen_stem"/>
