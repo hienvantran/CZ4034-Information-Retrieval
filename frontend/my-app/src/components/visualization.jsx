@@ -19,9 +19,7 @@ ChartJS.register(
 );
 const Visualization = ({term}) => {
     const [tweets, setTweets] = useState([]);
-    // const [noPos, setnoPos] = useState(0);
-    // const [noNeg, setnoNeg] = useState(0);
-    // const [noNeu, setnoNeu] = useState(0);
+
 
     const [sentiment, setSentiment] = useState({
         noPos: 0,
@@ -68,9 +66,7 @@ const Visualization = ({term}) => {
         
         <div className='tweet-container'>
             <div>pos/neu/neg: {noPos}/{noNeu}/{noNeg}</div>
-            <div style={{ padding: 20 }}>
-                <p>This is testing {term}</p>
-            </div>
+            
             <div style={{ maxWidth: "650px" }}>
 
                 <Bar
