@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -19,49 +19,51 @@ ChartJS.register(
 );
 const Visualization = ({term}) => {
     const [tweets, setTweets] = useState([]);
-    const [noPos, setnoPos] = useState(0);
-    const [noNeg, setnoNeg] = useState(0);
-    const [noNeu, setnoNeu] = useState(0);
+    // const [noPos, setnoPos] = useState(0);
+    // const [noNeg, setnoNeg] = useState(0);
+    // const [noNeu, setnoNeu] = useState(0);
 
+    const [sentiment, setSentiment] = useState({
+        noPos: 0,
+        noNeu: 0,
+        noNeg: 0,
+    });
+    
+    
     
     useEffect(() => {
+        
         if (term !== '') {
             const onSearchSubmit = async () => {
                 const res = await fetch(`http://localhost:8983/solr/CZ4034/spell?debugQuery=true&df=text&indent=true&q.op=AND&q=${term}&rows=12000&wt=json`)
                 if (res.status !== 200) return [];
                 const tweetsArray = await res.json();
+                const tweets = tweetsArray.response.docs;
+                setSentiment(s => { s.noNeu = 0; s.noPos = 0; s.noNeg = 0; return s });
+                for (let idx in tweets) {
+                    const tweet = tweets[idx];
+                    
+                    if (tweet['sentiment'][0] === 'NEUTRAL') {
+                        setSentiment(s => { s.noNeu = s.noNeu + 1; return s });
+                    }
+                    else if (tweet['sentiment'][0] === 'POSITIVE') {
+                        setSentiment(s => { s.noPos = s.noPos + 1; return s });
+                    }
+                    else {
+                        setSentiment(s => { s.noNeg = s.noNeg + 1; return s });
+                    }
+                    console.log("out");
+                };
+
                 setTweets(tweetsArray.response.docs);                
             }
             onSearchSubmit(term);
-            
-            console.log("feel tired");
-            console.log(tweets);
         }
     }, [term]);
-    
-    useEffect(() => {
-        tweets.map((tweet, i) => {
-            console.log("enter if");
-            if (tweet.sentiment == 'NEUTRAL') {
-                console.log("NEUTRAL");
-                console.log(tweet.sentiment);
-                setnoNeu(noNeu + 1);
-            }
-            else if (tweet.sentiment == 'POSITIVE') {
-                console.log("POSITIVE");
-                console.log(tweet.sentiment);
-                setnoPos(noPos + 1);
-            }
-            else {
-                console.log("NEGATIVE");
-                console.log(tweet.sentiment);
-                setnoNeg(noNeg + 1);
-            }
-            console.log("out");
-        });
-    },[noPos,noNeg,noNeu])
-    
+   
 
+    const { noPos, noNeu, noNeg} = sentiment;
+    
     return (
         
         <div className='tweet-container'>
