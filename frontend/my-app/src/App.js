@@ -23,7 +23,7 @@ function App() {
 
     const [updateIndex, setupdateIndex] = useState([]);
     const [visualizeTab, setVisualizeTab] = useState(false);
-    
+    const [term, setTerm] = useState('*:*');
 
     const handleOnChange = () => {
         setVisualizeTab(!visualizeTab);
@@ -31,12 +31,11 @@ function App() {
 
     const onSearchSubmit = useCallback(async () => {
         let query = searchTerm + ' ' + catTerm;
-        console.log('onSearchSubmit search term', searchTerm);
-        console.log('onSearchSubmit cat term', catTerm);
-        console.log('onSearchSubmit sort term', sort);
+
         
         if (query === ' ' || query === '')  query = '*:*';
         console.log("new query ", query.toLowerCase());
+        setTerm(query);
         let params = {
             'term': query.toLowerCase(),
             'sort': sort
@@ -113,7 +112,7 @@ function App() {
                     <span>There are total of {numTweets} results</span>
                     <input type="checkbox" id="general" name="general" value="General" checked={visualizeTab} onChange={() => handleOnChange()} style={{ float: 'right' }} ></input>
 
-                    {(!visualizeTab) ? renderedTweets : <Visualization />} 
+                    {(!visualizeTab) ? renderedTweets : <Visualization term={term} />} 
                 </Grid.Column>
                 <Grid.Column width={3} >
                     <Sort clearResults={clearResults} onSortSubmitted={setSort} />

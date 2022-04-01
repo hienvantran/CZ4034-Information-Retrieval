@@ -30,11 +30,7 @@ const Filter = ({ clearResults, onCatSubmitted }) => {
         <>        
             <div class="SentimentTitle">Sentiment</div>           
             <div className="row mt-5">
-                
-                
-                    {/* <button className="btn btn-warning w-100 mb-4">Emotion</button>
-                    <button className="btn btn-warning w-100 mb-4">Sentiment</button>
-                    <button className="btn btn-warning w-100 mb-4">All</button> */}
+
 
             <div>
                     <input

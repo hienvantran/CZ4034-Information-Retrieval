@@ -21,7 +21,7 @@ const Tweets = ({ tweet }) => {
                     <Card.Content extra>
                         <Label>
                             <RepeatIcon fontSize="small" />
-                            Sentiment
+                            {tweet.sentiment}
                         </Label>
                         <Label>
                             <RepeatIcon fontSize="small" />
