@@ -21,6 +21,10 @@ function App() {
     const [catTerm, setcatTerm] = useState('');
     const [sort, setSort] = useState('');
 
+    const [filterFlag, setfilterFlag] = useState(false);
+    const [filter, setFilter] = useState('');
+    const [filterTweets, setFilterTweets] = useState([]);
+
     const [updateIndex, setupdateIndex] = useState([]);
     const [visualizeTab, setVisualizeTab] = useState(false);
     const [term, setTerm] = useState('*:*');
@@ -30,6 +34,7 @@ function App() {
     };
 
     const onSearchSubmit = useCallback(async () => {
+        setfilterFlag(false);
         let query = searchTerm + ' ' + catTerm;
 
         
@@ -91,8 +96,21 @@ function App() {
         onSearchSubmit();
     }, [searchTerm])
 
+    useEffect(() => {
+        console.log("use Effect " + filter);
+        console.log(filterFlag)
+        setFilter(filter);
+        console.log(tweets.filter((tweet, i) => tweet.sentiment[0] === filter))
+        setFilterTweets(tweets.filter((tweet, i) => tweet.sentiment[0] === filter));
+        // onSearchSubmit();
+    }, [filter])
 
+    
     const renderedTweets = tweets.map((tweet, i) => {
+        return <Tweets tweet={tweet} key={i} />
+    })
+
+    const renderedFilterTweets = filterTweets.map((tweet, i) => {
         return <Tweets tweet={tweet} key={i} />
     })
 
@@ -106,13 +124,13 @@ function App() {
             <Grid container spacing={2} columns={16}>
                 <Grid.Column width={3}>
                     <Category clearResults={clearResults} onCatSubmitted={setcatTerm} />
-                    <Filter clearResults={clearResults} onCatSubmitted={setcatTerm} />
+                    <Filter flag={filterFlag} onFlag={setfilterFlag} onFilterSubmit={setFilter} />
                 </Grid.Column>
                 <Grid.Column width={10} className='main-content'>
                     <span>There are total of {numTweets} results</span>
                     <input type="checkbox" id="general" name="general" value="General" checked={visualizeTab} onChange={() => handleOnChange()} style={{ float: 'right' }} ></input>
 
-                    {(!visualizeTab) ? renderedTweets : <Visualization term={term} />} 
+                    {(!visualizeTab) ? ((!filterFlag) ? renderedTweets : renderedFilterTweets ) : <Visualization term={term} />} 
                 </Grid.Column>
                 <Grid.Column width={3} >
                     <Sort clearResults={clearResults} onSortSubmitted={setSort} />

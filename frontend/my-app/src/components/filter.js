@@ -1,29 +1,30 @@
 import React, { useEffect, useState } from 'react';
 
 
-const Filter = ({ clearResults, onCatSubmitted }) => {
-    const [bg, changeBGColor] = React.useState(1);
-    const [term, setTerm] = useState('');
+const Filter = ({ flag, onFlag, onFilterSubmit }) => {
 
     const [currentRadioValue, setCurrentRadioValue] = useState()
 
     const handleRadioChange = (e) => {
         setCurrentRadioValue(e.target.value);
+        onFlag(true);
     };
 
     // submit a new search
     useEffect(() => {
-        if (term !== '') {
-            // onSearchSubmit(term);
-            onCatSubmitted(term);
+        if (currentRadioValue !== '') {
+            onFilterSubmit(currentRadioValue);
+            
         }
-        else {
-            clearResults();
-            setTerm('');
-            // onSearchSubmit(term);
-            onCatSubmitted(term);
+    }, [currentRadioValue]);
+
+    useEffect(() => {
+        if (flag === false) {
+            setCurrentRadioValue();
+
         }
-    }, [term]);
+    }, [flag]);
+    
 
     return (
         
@@ -37,9 +38,9 @@ const Filter = ({ clearResults, onCatSubmitted }) => {
                     id="radio-item-1"
                     name="radio-item-1"
                     type="radio"
-                    value="radio-1"
+                    value="POSITIVE"
                     onChange={handleRadioChange}
-                    checked={currentRadioValue === 'radio-1'}
+                    checked={currentRadioValue === 'POSITIVE'}
                     />
                     <label htmlFor="radio-item-1">Positive</label>
             </div>
@@ -49,13 +50,11 @@ const Filter = ({ clearResults, onCatSubmitted }) => {
                     id="radio-item-2"
                     name="radio-item-2"
                     type="radio"
-                    value="radio-2"
+                    value="NEUTRAL"
                     onChange={handleRadioChange}
-                    checked={currentRadioValue === 'radio-2'}
+                    checked={currentRadioValue === 'NEUTRAL'}
                     />
-                    <label htmlFor="radio-item-2">
-                    Neutral
-                    </label>
+                    <label htmlFor="radio-item-2">Neutral</label>
                 </div>
 
                 <div>
@@ -63,13 +62,11 @@ const Filter = ({ clearResults, onCatSubmitted }) => {
                     id="radio-item-3"
                     name="radio-item-3"
                     type="radio"
-                    value="radio-3"
+                    value="NEGATIVE"
                     onChange={handleRadioChange}
-                    checked={currentRadioValue === 'radio-3'}
+                    checked={currentRadioValue === 'NEGATIVE'}
                     />
-                    <label htmlFor="radio-item-3">
-                    Negative
-                    </label>
+                    <label htmlFor="radio-item-3">Negative</label>
                 </div>
             
                 
