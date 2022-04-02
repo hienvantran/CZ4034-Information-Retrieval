@@ -13,3 +13,7 @@
     display: flex;
     justify-content: space-between;
 }
+
+.tweet-container {
+    padding: 1em;
+}
