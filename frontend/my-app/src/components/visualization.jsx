@@ -19,6 +19,8 @@ ChartJS.register(
 );
 const Visualization = ({term}) => {
     const [tweets, setTweets] = useState([]);
+    const [img, setImg] = useState();
+    const [loading, setLoading] = useState(true);
 
 
     const [sentiment, setSentiment] = useState({
@@ -37,23 +39,30 @@ const Visualization = ({term}) => {
                 if (res.status !== 200) return [];
                 const tweetsArray = await res.json();
                 const tweets = tweetsArray.response.docs;
-                setSentiment(s => { s.noNeu = 0; s.noPos = 0; s.noNeg = 0; return s });
-                for (let idx in tweets) {
-                    const tweet = tweets[idx];
-                    
-                    if (tweet['sentiment'][0] === 'NEUTRAL') {
-                        setSentiment(s => { s.noNeu = s.noNeu + 1; return s });
-                    }
-                    else if (tweet['sentiment'][0] === 'POSITIVE') {
-                        setSentiment(s => { s.noPos = s.noPos + 1; return s });
-                    }
-                    else {
-                        setSentiment(s => { s.noNeg = s.noNeg + 1; return s });
-                    }
-                    console.log("out");
-                };
+                fetch(`/visualization/`, {
+                    'method': 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(tweets)
+                })
+                    .then(response => response.json()).then(data => {
+                        console.log(data);
+                        setSentiment({
+                            noPos: data.positive,
+                            noNeu: data.neutral,
+                            noNeg: data.negative,
+                        });
+                        setImg(data.img)
+                        setLoading(false);
+                    })
+                    .catch(error => {
+                        // add error handling here
+                        setLoading(false);
+                        console.log(error);
+                    })
 
-                setTweets(tweetsArray.response.docs);                
+                setTweets(tweets);                
             }
             onSearchSubmit(term);
         }
@@ -61,14 +70,17 @@ const Visualization = ({term}) => {
    
 
     const { noPos, noNeu, noNeg} = sentiment;
+    if (loading) return (
+        <h2>Loading...</h2>
+    );
     
-    return (
+    if (!loading) return (
         
         <div className='tweet-container'>
-            <div>pos/neu/neg: {noPos}/{noNeu}/{noNeg}</div>
+            <h4>Sentiment Distribution</h4>
+            <p>Stats: pos/neu/neg: {noPos}/{noNeu}/{noNeg}</p>
             
             <div style={{ maxWidth: "650px" }}>
-
                 <Bar
                     data={{
                         // Name of the variables on x-axies for each bar
@@ -109,6 +121,11 @@ const Visualization = ({term}) => {
                     }}
                 />
             </div>
+            <div style={{ padding: "1em" }}>
+                <h4>WordCloud</h4>
+                <img src={`data:image/png;base64,${img}`} width={650} height={250} alt='Word Cloud' />
+            </div>
+            
             
 
         </div>
