@@ -109,8 +109,8 @@ const Visualization = ({term}) => {
                     }}
                 />
             </div>
-            
-
+            < img src={"http://localhost:5000/fig/345"} alt="Image Placeholder" height="340"></img>
+                    
         </div>
     );
 };
