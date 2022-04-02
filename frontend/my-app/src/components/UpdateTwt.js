@@ -1,16 +1,7 @@
 import React, { useEffect, useState} from 'react';
 
-const UpdateTwt = ({ onUpdateTweets }) => {
-    // const [index, setIndex] = useState([]);
-    // submit a new search
-    // useEffect(() => {
-    //     if (index !== []) {
-    //         onUpdateTweets(index);
-    //     }
-    //     else {
-    //         onUpdateTweets(index);
-    //     }
-    // }, [index]);
+const UpdateTwt = ({ onUpdateTweets, onLoading}) => {
+ 
     const [isChecked, setIsChecked] = useState(false);
     const [checkedState, setCheckedState] = useState(
         [false, false, false, false, false, false]
@@ -25,7 +16,7 @@ const UpdateTwt = ({ onUpdateTweets }) => {
     };
 
     // const addIndex = (newIndex) => setIndex(state => [...state, newIndex])
-    const updateTweets = () => {
+    const updateTweets = (e) => {
         console.log("checking updateTweets");
         console.log(`Checked state: ${checkedState}`);
         const updatedIndex = [];
@@ -38,6 +29,7 @@ const UpdateTwt = ({ onUpdateTweets }) => {
 
         onUpdateTweets(updatedIndex);
         setCheckedState([false, false, false, false, false, false]);
+        onLoading(true);
     }
     return (
         <>

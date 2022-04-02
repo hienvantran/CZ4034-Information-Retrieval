@@ -13,6 +13,7 @@ import UpdateTwt from './components/UpdateTwt';
 
 
 function App() {
+    const [loading, setLoading] = useState(false);
     const [tweets, setTweets] = useState([]);
     const [numTweets, setnumTweets] = useState(0);
     const [spellcheck, setspellcheck] = useState('');
@@ -72,11 +73,22 @@ function App() {
     useEffect(() => {
         console.log("use Effect " + updateIndex);
         for (let index in updateIndex) {
-            fetch('/update/' + index).then(res => res.json()).catch(error => {
+            fetch('/update/' + index).then(res => {
+                res.json();
+                setLoading(false);
+                window.location.reload(false);
+            }).catch(error => {
+                setLoading(false);
                 console.log(error)
             });
         }
     }, [updateIndex]);
+
+    useEffect(() => {
+        console.log("use Effect " + loading);
+        setLoading(loading);
+        
+    }, [loading]);
 
     useEffect(() => {
         setSort(sort);
@@ -116,6 +128,7 @@ function App() {
 
 
     const spellCheckSection = spellcheck !== '' ? <div>Do you mean {spellcheck}?</div> : <></>;
+    
 
     return (
         <div className='main'>
@@ -127,15 +140,16 @@ function App() {
                     <Filter flag={filterFlag} onFlag={setfilterFlag} onFilterSubmit={setFilter} />
                 </Grid.Column>
                 <Grid.Column width={10} className='main-content'>
-                    <span>There are total of {numTweets} results</span>
+                    <span style={{ fontWeight: 'bold' }}>There are total of {numTweets} results - <em style={{ fontWeight: 'lighter' }}>Visualize by checking the checkbox</em></span>
+                    
                     <input type="checkbox" id="general" name="general" value="General" checked={visualizeTab} onChange={() => handleOnChange()} style={{ float: 'right' }} ></input>
-
-                    {(!visualizeTab) ? ((!filterFlag) ? renderedTweets : renderedFilterTweets ) : <Visualization term={term} />} 
+                    
+                    {(!visualizeTab) ? (loading? <div>Loading...</div>:((!filterFlag) ? renderedTweets : renderedFilterTweets) ) : <Visualization term={term} />} 
                 </Grid.Column>
                 <Grid.Column width={3} >
                     <Sort clearResults={clearResults} onSortSubmitted={setSort} />
                     <br />
-                    <UpdateTwt onUpdateTweets={setupdateIndex}/>
+                    <UpdateTwt onUpdateTweets={setupdateIndex} onLoading={setLoading}/>
                 </Grid.Column>
             </Grid>
         </div>
