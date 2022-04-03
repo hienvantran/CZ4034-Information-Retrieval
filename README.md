@@ -20,8 +20,9 @@ pip install -r requirements.txt
 ````
 flask run
 ````
-4. Download the model
-      https://entuedu-my.sharepoint.com/:u:/g/personal/eong016_e_ntu_edu_sg/ESJGFMiK42RFg-JlZpO7I-MBJCxjij37KF4-D-DDtWX9iA?e=upTOJG
+4. Download the bert-cnn model
+      https://entuedu-my.sharepoint.com/:f:/g/personal/eong016_e_ntu_edu_sg/EgT3tCY8ZbhLsZLOOu2byFQBGHNWYQVyn5LOGsD1VIsIew?e=jOGxMd
+      
 
 ## Note: 
 1. Run all backends before starting frontend.
