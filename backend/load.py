@@ -1,104 +1,78 @@
+import pandas as pd
 import numpy as np
 
-import pandas as pd
-import torch
-import torch.nn as nn
-import torch.optim as optim
+import nltk
+import re
 
-import torch.nn.functional as F
+from sklearn.metrics import accuracy_score, precision_score, recall_score
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
 
-from transformers import BertTokenizer, BertModel
+from joblib import load
+import pickle
+import spacy
+import emoji
+import string
 
-class CNNBert(nn.Module):
-    def __init__(self, bert, n_filters, filter_sizes, output_dim,
-                 dropout):
+nltk.download('punkt')
 
-        super().__init__()
-        self.bert = bert
+def vectorize(data, vectorizer):
+    X_tfidf = vectorizer.transform(data)
+    words = vectorizer.get_feature_names_out()
+    X_tfidf_df = pd.DataFrame(X_tfidf.toarray())
+    X_tfidf_df.columns = words
+    return(X_tfidf_df)
 
-        embedding_dim = bert.config.to_dict()['hidden_size']
+def punc_clean(text):
+    text= ' '.join(re.sub('(@[A-Za-z0-9_]+)|(&[A-Za-z0-9_]+)|([^0-9A-Za-z \t]) |(\w+:\/\/\S+)|(["“)#!?”(-.%&$,*/;:<>=\/|^`{}~])' , " ", text).split())
+    text = re.sub('[0-9]+', '', text)
+    text = re.sub('['+string.punctuation+']', '', text)
+    return text
 
-        #self.embedding = nn.Embedding(vocab_size, embedding_dim)
+def replace_name(text): 
+    # Convert these @pfizer, @sinovac, @moderna_tx, @sputnikvaccine to normal form pfizer/sinovac/moderna/sputnik
+    vaccine_dict = {"@pfizer": "pfizer",
+                    "@sinovac": "sinovac",
+                   "@moderna_tx": "moderna",
+                   "@sputnikvaccine": "sputnik"}
+    
+    for key in vaccine_dict:
+        if key in text:
+            text = text.replace(key, vaccine_dict[key])
+    
+    return text
 
-        self.convs = nn.ModuleList([
-            nn.Conv2d(in_channels=1,
-                      out_channels=n_filters,
-                      kernel_size=(fs, embedding_dim))
-            for fs in filter_sizes
-        ])
+def space(text, nlp):
+    doc = nlp(text)
+    return " ".join([token.lemma_ for token in doc])
 
-        self.fc = nn.Linear(len(filter_sizes) * n_filters, output_dim)
+def preprocess(text, nlp):
+    
+    text = replace_name(text)
+    text = text.lower()
+    text = emoji.demojize(text)
+    text = text.encode('ascii', 'ignore').decode('ascii')
+    text = punc_clean(text)
+    text = space(text, nlp)
 
-        self.dropout = nn.Dropout(dropout)
+    return text
 
-    def forward(self, text):
+def load_model(text):
+    # df = pd.read_csv("data.csv", encoding = "unicode_escape")
+    # X_data = df[['text_clean']].to_numpy().reshape(-1)
+    # y_data = df[['label']].to_numpy().reshape(-1)
+    nlp = spacy.load("en_core_web_sm")
+    text = preprocess(text, nlp)
+    X_data = pd.DataFrame([text]).to_numpy().reshape(-1)
 
-        #text = [sent len, batch size]
+    with open("./models/ensemble + boosting + RF/weights/tfidf.pickle", "rb") as read_file:
+        vectorizer = pickle.load(read_file)
+    
+    X_data = vectorize(X_data, vectorizer)
 
-        #text = text.permute(1, 0)
+    clf = load("./models/ensemble + boosting + RF/weights/Ensemble.joblib")
 
-        #text = [batch size, sent len]
-        with torch.no_grad():
-            embedded = self.bert(text)[0]
-
-        #embedded = self.embedding(text)
-
-        #embedded = [batch size, sent len, emb dim]
-
-        embedded = embedded.unsqueeze(1)
-
-        #embedded = [batch size, 1, sent len, emb dim]
-
-        conved = [F.relu(conv(embedded)).squeeze(3) for conv in self.convs]
-
-        #conv_n = [batch size, n_filters, sent len - filter_sizes[n]]
-
-        pooled = [F.max_pool1d(conv, conv.shape[2]).squeeze(2)
-                  for conv in conved]
-
-        #pooled_n = [batch size, n_filters]
-
-        cat = self.dropout(torch.cat(pooled, dim=1))
-
-        #cat = [batch size, n_filters * len(filter_sizes)]
-
-        return self.fc(cat)
-
-
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-max_input_length = tokenizer.max_model_input_sizes['bert-base-uncased']
-init_token_idx = tokenizer.cls_token_id
-eos_token_idx = tokenizer.sep_token_id
-pad_token_idx = tokenizer.pad_token_id
-unk_token_idx = tokenizer.unk_token_id
-
-N_FILTERS = 100
-FILTER_SIZES = [2,3,4]
-OUTPUT_DIM = 8
-DROPOUT = 0.5
-
-bert = BertModel.from_pretrained('bert-base-uncased')
-model = CNNBert(bert,N_FILTERS, FILTER_SIZES, OUTPUT_DIM, DROPOUT)
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-print(bert)
-
-model.load_state_dict(torch.load('./model/bert_cnn.pt',
-                      map_location=torch.device('cpu')))
-
-
-def predict_sentiment(model, tokenizer, sentence):
-    model.eval()
-    tokens = tokenizer.tokenize(sentence)
-    tokens = tokens[:max_input_length-2]
-    indexed = [init_token_idx] + tokenizer.convert_tokens_to_ids(tokens) + [eos_token_idx]
-    tensor = torch.LongTensor(indexed).to(device)
-    tensor = tensor.unsqueeze(0)
-    prediction = torch.sigmoid(model(tensor))
-    return torch.argmax(prediction.squeeze()).item()
-
-categories = {0: "Negative", 1:"Neutral",2: "Positive"}
-
-pred_class = predict_sentiment(model,tokenizer, "covid is the worst")
-# print(f'Predicted class is: {categories[int(LABEL.vocab.itos[pred_class])]}')
-print(f'Predicted class is: ', pred_class)
+    y_pred = clf.predict(X_data)
+    categories = {1: "NEGATIVE", 2:"NEUTRAL", 3: "POSITIVE"}
+    # print(f'Predicted class is: ', pred_class)
+    return categories[y_pred[0]]

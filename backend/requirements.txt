@@ -8,3 +8,9 @@ python-dotenv==0.17.1
 Werkzeug==2.0.1
 wordcloud
 aioflask
+spacy
+sklearn
+emoji==1.7.0
+joblib
+pickle
+nltk

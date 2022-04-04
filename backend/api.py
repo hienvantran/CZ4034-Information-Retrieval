@@ -5,6 +5,7 @@ from io import BytesIO
 import requests
 import json
 from update_crawl import crawl_NewData
+from load import load_model
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -22,9 +23,12 @@ def get_latest_twt(vaccine_id):
                'Accept': 'application/json'}
 
     data = crawl_NewData(vaccine_id)
-
+    logging.info("New data")
+    
+    result = [dict(item, **{'sentiment': load_model(item['text'])}) for item in data]
+    logging.debug(result[:5])
     response = requests.post(update_url, data=json.dumps(
-        data), headers=headers, params=querystring)
+        result), headers=headers, params=querystring)
     logging.info('Updated')
     logging.debug(response)
 
