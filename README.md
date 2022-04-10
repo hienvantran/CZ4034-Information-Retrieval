@@ -21,10 +21,11 @@ pip install -r requirements.txt
 flask run
 ````
 4. Unzip the weights.zip for model in folder backend/models/ensemble+boosting+RF
-5. Other model weights can be found here:
-      https://entuedu-my.sharepoint.com/:f:/g/personal/eong016_e_ntu_edu_sg/EgT3tCY8ZbhLsZLOOu2byFQBGHNWYQVyn5LOGsD1VIsIew?e=jOGxMd
 
-5. Run Solr under backend/Solr-8.11.1:
+5. Other model weights can be found here:
+https://drive.google.com/drive/folders/10kl7DZ4wr5qKvBDq1dzzEfFfbJiuGdbB?usp=sharing
+
+6. Run Solr under backend/Solr-8.11.1:
 ````bin\solr.cmd start ````
       
 ## Note: 
