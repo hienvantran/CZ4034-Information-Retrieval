@@ -20,7 +20,7 @@ pip install -r requirements.txt
 ````
 flask run
 ````
-4. Unzip the weights.zip for model in folder backend/models/ensemble+boosting+RF
+4. Unzip the weights.zip for model in folder backend/models/roberta
 
 5. Other model weights can be found here:
 https://drive.google.com/drive/folders/10kl7DZ4wr5qKvBDq1dzzEfFfbJiuGdbB?usp=sharing
