@@ -22,6 +22,9 @@ flask run
 ````
 4. Download the model
       https://entuedu-my.sharepoint.com/:f:/g/personal/eong016_e_ntu_edu_sg/EgT3tCY8ZbhLsZLOOu2byFQBGHNWYQVyn5LOGsD1VIsIew?e=jOGxMd
+
+5. Run Solr under backend/Solr-8.11.1:
+````bin\solr.cmd start ````
       
 ## Note: 
 1. Run all backends before starting frontend.
