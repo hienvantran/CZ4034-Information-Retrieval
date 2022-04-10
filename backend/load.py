@@ -65,12 +65,12 @@ def load_model(text):
     text = preprocess(text, nlp)
     X_data = pd.DataFrame([text]).to_numpy().reshape(-1)
 
-    with open("./models/ensemble + boosting + RF/weights/tfidf.pickle", "rb") as read_file:
+    with open("./models/roberta/weights/tfidf.pickle", "rb") as read_file:
         vectorizer = pickle.load(read_file)
     
     X_data = vectorize(X_data, vectorizer)
 
-    clf = load("./models/ensemble + boosting + RF/weights/Ensemble.joblib")
+    clf = load("./models/roberta/weights/Ensemble.joblib")
 
     y_pred = clf.predict(X_data)
     categories = {1: "NEGATIVE", 2:"NEUTRAL", 3: "POSITIVE"}
